@@ -2,13 +2,13 @@ const express = require("express");
 const router = express.Router();
 const { check } = require("express-validator");
 
-const presupuestoController = require("../controllers/presupuestoController");
-const gastoController = require("../controllers/gastoController");
+const ligaController = require("../controllers/ligaController");
+//const gastoController = require("../controllers/gastoController");
 const usuarioController = require("../Controllers/usuarioController");
 const authController = require("../controllers/authController");
 
 module.exports = () => {
-  router.get("/", presupuestoController.homePresupuesto);
+  router.get("/", ligaController.homeLiga);
 
 
   //Iniciar sesion
@@ -49,11 +49,11 @@ module.exports = () => {
  router.post("/iniciarSesion", authController.autenticarUsuario);
  // Cerrar sesión
  router.get("/cerrarSesion", authController.verificarUsuario,authController.cerrarSesion);
- //Presupuestos
+ /* //Presupuestos
   //router.get("/nuevoPresupuesto", presupuestoController.formularioPresupuesto);
  //router.post("/nuevoPresupuesto", presupuestoController.crearPresupuesto);
 
-router.get("/nuevoPresupuesto", presupuestoController.formularioPresupuesto);
+//router.get("/nuevoPresupuesto", presupuestoController.formularioPresupuesto);
 //router.post("/nuevoPresupuesto", presupuestoController.autenticarUsuario);
 
 router.post("/nuevoPresupuesto",
@@ -105,7 +105,7 @@ gastoController.editarGasto
 
 // Eliminar una gasto
 router.delete("/delete/:_id", gastoController.eliminarGasto);
-
+ */
 
  // Reestablecer la contraseña del usuario
  router.get("/reestablecer",authController.formularioReestablecerContrasena);
@@ -116,7 +116,7 @@ router.post("/reestablecer/:token",authController.almacenarNuevaContrasena);
 // Buscador
 //router.post("/buscador", vacanteController.buscarVacantes);
 
-router.get("/totalPresupuesto/:_id",presupuestoController.verTodo);
+/* router.get("/totalPresupuesto/:_id",presupuestoController.verTodo); */
 
 return router;
 

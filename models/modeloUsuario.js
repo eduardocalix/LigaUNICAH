@@ -22,15 +22,6 @@ const usuarioSchema = new mongoose.Schema({
     lowercase:true,
     trim: true
   },
-  telefono: {
-    type: String,
-    default: 0,
-    trim: true
-  },
-  ocupacion: {
-    type: String,
-    trim: true
-  },
   /* imagen: {
     type: String,
     trim: true,
