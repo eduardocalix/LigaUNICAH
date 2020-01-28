@@ -7,36 +7,32 @@ const shortid = require("shortid");
 // https://mongoosejs.com/docs/guide.html#models
 // Tipos de schemas en Mongoose
 // https://mongoosejs.com/docs/schematypes.html
-const equipoSchema = new mongoose.Schema({
-  nombreEquipo: {
+const arbitroSchema = new mongoose.Schema({
+  nombreArbitro: {
     type: String,
-    trim: true,
-    required: "El ingreso mensual es requerido"
-  },
-  categoria: {
-    type: String,
+    required: "El nombre del arbitro es requerido",
     trim: true
   },
-  torneo: {
-    type: String,
-    trim: true
-  },
-  encargado: {
-    type: String,
-    trim: true
+  numeroTelefono: {
+    type: Number,
+    required: "El numero de cuenta es requerido"
   },
   observacion: {
     type: String,
     trim: true
+  },
+  url: {
+    type: String,
+    lowercase: true
   }
 });
 // Hooks para generar la URL (en Mongoose se conoce como middleware)
-equipoSchema.pre("save", function(next) {
+arbitroSchema.pre("save", function(next) {
   // Crear la URL
-  const url = slug(this.nombreEquipo);
+  const url = slug(this.nombreArbitro);
   this.url = `${url}-${shortid.generate()}`;
 
   next();
 });
 
-module.exports = mongoose.model("equipo", equipoSchema);
+module.exports = mongoose.model("arbitro", arbitroSchema);
