@@ -7,7 +7,7 @@ const Usuario = require('../models/modeloUsuario');
 
 exports.formularioInicioSesion = (req, res) => {
     res.render("user/iniciarSesion", {
-      nombrePagina: "Iniciar sesión en Master Presupuesto"
+      nombrePagina: "Iniciar sesión en liga UNICAH"
     });
   };
 
@@ -27,8 +27,8 @@ exports.agregarUsuario = async (req, res, next) => {
     req.flash('errors', [erroresArray]);
 
     res.render("user/crearCuenta", {
-      nombrePagina: "Crear cuenta en Master Presupuesto",
-      tagline: "¡Haz tu presupuesto de forma gratuita!",
+      nombrePagina: "Crear cuenta en liga UNICAH",
+      tagline: "¡Liga Jesús Sacramentado!",
       messages: req.flash()
     });
     return;
@@ -45,8 +45,8 @@ exports.agregarUsuario = async (req, res, next) => {
     req.flash("success", ["El usuario registrado exitosamente"]);
     // renderizar la página con los errores
     res.render("user/iniciarSesion", {
-    nombrePagina: "Crear cuenta en Master Presupuesto",
-    tagline: "¡Haz tu presupuesto de forma gratuita!",
+    nombrePagina: "Crear cuenta en liga UNICAH",
+    tagline: "¡Liga Jesús Sacramentado!",
     message: req.flash()
       });
   } catch (error) {
@@ -56,8 +56,8 @@ exports.agregarUsuario = async (req, res, next) => {
 
     // renderizar la página con los errores
     res.render("user/crearCuenta", {
-      nombrePagina: "Crear cuenta en Master Presupuesto",
-      tagline: "¡Haz tu presupuesto de forma gratuita!",
+      nombrePagina: "Crear cuenta en liga UNICAH",
+      tagline: "¡Liga Jesús Sacramentado!",
       messages: req.flash()
     });
   }
@@ -65,14 +65,14 @@ exports.agregarUsuario = async (req, res, next) => {
   
 exports.formularioCrearUsuario = (req, res) => {
     res.render("user/crearCuenta", {
-      nombrePagina: "Crear cuenta en Master Presupuesto"
+      nombrePagina: "Crear cuenta en liga UNICAH"
     });
   };
 
   // Mostrar el formulario de editar perfil del usuario
 exports.formularioEditarPerfil = (req, res) => {
   res.render("editarPerfil", {
-    nombrePagina: "Edita el perfil de tu usuario en DevFinder",
+    nombrePagina: "Edita el perfil de tu usuario",
     usuario: req.user,
     cerrarSesion: true,
     nombre: req.user.nombre
