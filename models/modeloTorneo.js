@@ -16,10 +16,25 @@ const torneoSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
-  año: {
+  year: {
     type: String,
     trim: true
+  },
+  usuario: {
+    type: String,
+    trim: true
+  },
+  url: {
+    type: String,
+    lowercase: true
   }
 });
+// Hooks para generar la URL (en Mongoose se conoce como middleware)
+torneoSchema.pre("save", function(next) {
+  // Crear la URL
+  const url = slug(this.nombreTorneo);
+  this.url = `${url}-${shortid.generate()}`;
 
+  next();
+});
 module.exports = mongoose.model("torneo", torneoSchema);

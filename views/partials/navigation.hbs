@@ -1,18 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="/">Liga UNICAH</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"><img src="img/logo25M.png"></span></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto my-2 my-lg-0"> 
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="/">Liga UNICAH</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto my-2 my-lg-0"> 
       {{#if user}} 
-       <li class="navbar-brand">
+        <li class="navbar-brand">
           <a class="nav-link js-scroll-trigger" href="/Perfil">{{user.nombre}}
         </li> 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Torneos
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -22,24 +21,20 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/articles/add">Agregar un torneo</a> 
           </div>
-        </li>
-        
+        </li>       
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="/profile">Perfil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="/cerrarSesion">Cerrar Sesión</a>
-        </li> 
-        
+        </li>         
       {{else}} 
-          <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Torneos
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/mostrarTorneo">Todos los torneos</a>
-            
+            <a class="dropdown-item" href="/mostrarTorneo">Todos los torneos</a>         
           </div>
         </li>
         <li class="nav-item">
@@ -47,10 +42,9 @@
         </li>
        {{!--  <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="/crearCuenta">Crear Cuenta</a>
-        </li> --}}
-        
+        </li> --}}  
       {{/if}} 
-    </ul>
+      </ul>
     </div>
   </div>
 </nav>

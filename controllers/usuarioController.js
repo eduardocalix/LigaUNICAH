@@ -9,7 +9,7 @@ exports.formularioInicioSesion = (req, res) => {
     res.render("user/iniciarSesion", {
       nombrePagina: "Iniciar sesión en liga UNICAH"
     });
-  };
+};
 
   // Almacena una cuenta de usuario
 exports.agregarUsuario = async (req, res, next) => {

@@ -46,7 +46,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // Creación de la sesión y de la cookie
 app.use(cookieParser());
 //estableciendo la conexion con la base en MongoDB
-/* app.use(
+app.use(
   session({
     secret: process.env.SECRET,
     key: process.env.KEY,
@@ -54,20 +54,20 @@ app.use(cookieParser());
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
-);  */
+);  
 
 //Implementación de passport
 app.use(passport.initialize());
 app.use(passport.session());
 //app.use(validator());
 //Mensajes
-//app.use(flash());
+app.use(flash());
 //variables GLobales
 app.use((req, res, next) => {
   //Estos son los mensajes que hemos creado para las operaciones
- /* res.locals.message = req.flash('message');
+ res.locals.message = req.flash('message');
   res.locals.success = req.flash('success');
-   res.locals.errors = req.flash('error'); */
+   res.locals.errors = req.flash('error'); 
   res.locals.user = req.user;
   next();
 });
@@ -77,7 +77,7 @@ app.use((req, res, next) => {
 //que son las carpetas de donde renderizamos nuestras vistas
 app.use("/", router());
 //app.use(require('./Routes/index'));
-/*
+
 //app.use(require('./Routes/presupuesto.js'));
 // 404
 app.use((req, res, next) => {
@@ -95,7 +95,7 @@ app.use((error, req, res, next) => {
     status,
     message: error.message
   });
-}); */
+}); 
 
 
 const host = "0.0.0.0";

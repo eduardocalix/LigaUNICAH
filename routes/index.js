@@ -3,7 +3,7 @@ const router = express.Router();
 const { check } = require("express-validator");
 
 const ligaController = require("../controllers/ligaController");
-//const gastoController = require("../controllers/gastoController");
+const torneoController = require("../controllers/torneoController");
 const usuarioController = require("../Controllers/usuarioController");
 const authController = require("../controllers/authController");
 
@@ -30,12 +30,6 @@ module.exports = () => {
       check("correo", "El correo electrónico no es vålido.")
         .isEmail()
         .normalizeEmail(),
-      check("telefono", "El telefono no es vålido.")
-        .not()
-        .isEmpty(),
-      check("ocupacion", "La ocupacion es requerida.")
-        .not()
-        .isEmpty(),
       check("confirmpassword", "Debe ingresar la confirmación de tu contraseña")
         .not()
         .isEmpty(),
@@ -49,35 +43,35 @@ module.exports = () => {
  router.post("/iniciarSesion", authController.autenticarUsuario);
  // Cerrar sesión
  router.get("/cerrarSesion", authController.verificarUsuario,authController.cerrarSesion);
- /* //Presupuestos
-  //router.get("/nuevoPresupuesto", presupuestoController.formularioPresupuesto);
- //router.post("/nuevoPresupuesto", presupuestoController.crearPresupuesto);
+//Torneos
+  //router.get("/nuevoTorneo", presupuestoController.formularioTorneo);
+ //router.post("/nuevoTorneo", presupuestoController.crearTorneo);
 
-//router.get("/nuevoPresupuesto", presupuestoController.formularioPresupuesto);
-//router.post("/nuevoPresupuesto", presupuestoController.autenticarUsuario);
+router.get("/nuevoTorneo", torneoController.formularioTorneo);
+//router.post("/nuevoTorneo", torneoController.autenticarUsuario);
 
-router.post("/nuevoPresupuesto",
+router.post("/nuevoTorneo",
 authController.verificarUsuario,
-presupuestoController.agregarPresupuesto
+torneoController.agregarTorneo
 );
+ /* 
+// Mostrar una torneo
+router.get("/mostrarTorneo", torneoController.mostrarTorneo);
 
-// Mostrar una presupuesto
-router.get("/mostrarPresupuesto", presupuestoController.mostrarPresupuesto);
-
-// Editar un presupuesto
+// Editar un torneo
 router.get(
-"/editarPresupuesto/:url",
+"/editarTorneo/:url",
 authController.verificarUsuario,
-presupuestoController.formularioEditarPresupuesto
+torneoController.formularioEditarTorneo
 );
 router.post(
-"/editarPresupuesto/:url",
+"/editarTorneo/:url",
 authController.verificarUsuario,
-presupuestoController.editarPresupuesto
+torneoController.editarTorneo
 );
 
-// Eliminar un presupuesto
-router.post("/delete/:_id", presupuestoController.eliminarPresupuesto);
+// Eliminar un torneo
+router.post("/delete/:_id", torneoController.eliminarTorneo);
 
 
 //Agregar un gasto
@@ -116,7 +110,7 @@ router.post("/reestablecer/:token",authController.almacenarNuevaContrasena);
 // Buscador
 //router.post("/buscador", vacanteController.buscarVacantes);
 
-/* router.get("/totalPresupuesto/:_id",presupuestoController.verTodo); */
+/* router.get("/totalTorneo/:_id",presupuestoController.verTodo); */
 
 return router;
 

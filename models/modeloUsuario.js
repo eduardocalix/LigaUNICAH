@@ -21,6 +21,10 @@ const usuarioSchema = new mongoose.Schema({
     required: " El correo es requerido",
     lowercase:true,
     trim: true
+  },  
+  tipo: {
+    type: String,
+    trim: true
   },
   /* imagen: {
     type: String,
