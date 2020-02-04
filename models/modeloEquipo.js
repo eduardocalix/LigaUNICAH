@@ -11,13 +11,13 @@ const equipoSchema = new mongoose.Schema({
   nombreEquipo: {
     type: String,
     trim: true,
-    required: "El ingreso mensual es requerido"
+    required: "El nombre del equipo es requerido"
   },
-  categoria: {
+  idcategoria: {
     type: String,
     trim: true
   },
-  torneo: {
+  urltorneo: {
     type: String,
     trim: true
   },
@@ -28,6 +28,10 @@ const equipoSchema = new mongoose.Schema({
   observacion: {
     type: String,
     trim: true
+  },
+  url: {
+    type: String,
+    lowercase: true
   }
 });
 // Hooks para generar la URL (en Mongoose se conoce como middleware)
