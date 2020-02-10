@@ -3,6 +3,7 @@ const router = express.Router();
 const { check } = require("express-validator");
 
 const ligaController = require("../controllers/ligaController");
+const equipoController = require("../controllers/equipoController");
 const torneoController = require("../controllers/torneoController");
 const usuarioController = require("../Controllers/usuarioController");
 const authController = require("../controllers/authController");
@@ -50,14 +51,11 @@ module.exports = () => {
 router.get("/nuevoTorneo", torneoController.formularioTorneo);
 //router.post("/nuevoTorneo", torneoController.autenticarUsuario);
 
-router.post("/nuevoTorneo",
-authController.verificarUsuario,
-torneoController.agregarTorneo
-);
- /* 
+router.post("/nuevoTorneo",authController.verificarUsuario, torneoController.agregarTorneo);
+ 
 // Mostrar una torneo
-router.get("/mostrarTorneo", torneoController.mostrarTorneo);
-
+router.get("/mostrarTorneos", torneoController.mostrarTorneo);
+/*
 // Editar un torneo
 router.get(
 "/editarTorneo/:url",
@@ -72,35 +70,32 @@ torneoController.editarTorneo
 
 // Eliminar un torneo
 router.post("/delete/:_id", torneoController.eliminarTorneo);
+*/
 
+//Agregar un equipo
+router.get("/nuevoEquipo/:url", equipoController.formularioNuevoEquipo);
 
-//Agregar un gasto
-router.get("/nuevoGasto/:url", gastoController.formularioNuevaGasto);
+router.post("/nuevoEquipo/:url",authController.verificarUsuario,equipoController.agregarEquipo);
 
-router.post("/nuevoGasto/:url",
-authController.verificarUsuario,
-gastoController.agregarGasto
-);
+// Mostrar los equipos
+/* router.get("/mostrarEquipo/:_id", equipoController.mostrarEquipos);
 
-// Mostrar los gastos
-router.get("/mostrarGasto/:_id", gastoController.mostrarGastos);
-
-// Editar una gasto
+// Editar una equipo
 router.get(
-"/editarGasto/:url",
+"/editarEquipo/:url",
 authController.verificarUsuario,
-gastoController.formularioEditarGasto
+equipoController.formularioEditarEquipo
 );
 router.post(
-"/editarGasto/:url",
+"/editarEquipo/:url",
 authController.verificarUsuario,
-gastoController.editarGasto
+equipoController.editarEquipo
 );
 
-// Eliminar una gasto
-router.delete("/delete/:_id", gastoController.eliminarGasto);
- */
+// Eliminar una equipo
+router.delete("/delete/:_id", equipoController.eliminarEquipo);
 
+ */
  // Reestablecer la contraseña del usuario
  router.get("/reestablecer",authController.formularioReestablecerContrasena);
 router.post("/reestablecer", authController.enviarToken);

@@ -100,7 +100,7 @@ exports.editarPerfil = async (req, res) => {
   // Guardar los cambios
   await usuario.save();
 
-  req.flash("correcto", ["Cambios almacenados correctamente"]);
+  req.flash("success", ["Cambios almacenados correctamente"]);
 
   // Redireccionar
   res.redirect("/administrar");

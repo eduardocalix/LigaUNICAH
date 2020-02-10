@@ -5,7 +5,7 @@ const crypto = require("crypto");
 const enviarEmail = require("../handlers/email");
 
 exports.autenticarUsuario = passport.authenticate("local", {
-  successRedirect: "/nuevoPresupuesto",
+  successRedirect: "/mostrarTorneos",
   failureRedirect: "/iniciarSesion",
   failureFlash: true,
   badRequestMessage: ["Debes ingresar ambos campos"]

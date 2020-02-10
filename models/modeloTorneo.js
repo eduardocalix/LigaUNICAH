@@ -20,6 +20,10 @@ const torneoSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  categoria:{
+    type: String,
+    trim: true
+  },
   usuario: {
     type: String,
     trim: true

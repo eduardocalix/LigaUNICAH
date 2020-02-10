@@ -1,40 +1,44 @@
 const mongoose = require("mongoose");
 const Torneo = require('../models/modeloTorneo');
 const Equipo = require('../models/modeloEquipo');
-const Categoria = mongoose.model("modeloGastos");
 //const Vacante = mongoose.model("Vacante");
 //const { isAuthenticated } = require('../helpers/auth');
 const Usuario = require('../models/modeloUsuario');
 
-exports.formularioEquipo =  async (req, res, next) => {
- 
+exports.formularioNuevoEquipo =  async (req, res) => {
+  const usuarioO = req.user;
+  const torneo = await Torneo.findOne({ url: req.params.url });
+  const usuario = await Usuario.find({ _id: usuarioO._id });
   res.render("equipos/nuevoEquipo", {
     nombrePagina: "Nuevo equipo",
-    tagline: "¡Liga Jesús Sacramentado!"
+    tagline: "¡Liga Jesús Sacramentado!",
+    torneo, 
+    usuario
   });
-  req.flash("success", ["Bienvenido"]);
+  
 };
 
   // Agregar un nueva equipo a la base de datos
-exports.agregarEquipo = async (req, res) => {
+exports.agregarEquipo = async (req, res,next) => {
     const usuarioO = req.user;
     //console.log("estos son los datos que trae el equipo");
     //console.log(req.body);
     const torneo = await Torneo.findOne({ url: req.params.url });
     if (!torneo) return next();
-        const gasto = new Gasto(req.body);
-        //console.log(torneo._id);
-        const categoria = await Categoria.findOne({ url: req.params.url });
-        if (!torneo) return next();
-            gasto.torneo = torneo._id;
-    const id =torneo._id;
-    const equipo = new Equipo(req.body);
-  
-    // Agregrando el usuario que crea la equipo
-    equipo.encargado = usuarioO._id;
+      //console.log(torneo._id);
+      //const categoria = await Categoria.findOne({ _id: req.params.nombre });
+       
+      const url = torneo.url;
+      const categoria = torneo.categoria;
+      const equipo = new Equipo(req.body);
+      equipo.torneo = url;
+      equipo.categoria = categoria;
+      // Agregrando el usuario que crea la equipo
+      equipo.encargado = usuarioO._id;
   
     // Almacenar en la base de datos
     const nuevoEquipo = await equipo.save();
+    req.flash("success", ["Nuevo equipo agregado satisfactoriamente!"]);
   
     // Redireccionar
    res.redirect("/mostrarEquipo");

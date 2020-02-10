@@ -13,7 +13,7 @@ const equipoSchema = new mongoose.Schema({
     trim: true,
     required: "El nombre del equipo es requerido"
   },
-  idcategoria: {
+  categoria: {
     type: String,
     trim: true
   },

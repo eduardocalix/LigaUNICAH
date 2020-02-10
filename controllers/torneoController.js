@@ -42,14 +42,43 @@ exports.agregarTorneo = async (req, res) => {
    res.redirect("/mostrarTorneo");
   };
 
+exports.mostrarTorneoAll = async(req,res, next)=> {
+    const torneos = await Torneo.find();
+      // Si no hay resultados
+        if (!torneos) return next();
+          //console.log(torneos.nombreTorneo);
+          const nombre= "UNICAH";
+          res.render("torneos/mostrarTorneos", {
+            nombrePagina: "Torneos",
+            torneos,
+            nombre
+          }); 
+
+}    
+ 
+exports.mostrarTorneo = async (req, res, next) => {
+  
+    try {
+      const usuarioO = req.user;
+      const usuario = await Usuario.findOne({ _id: usuarioO._id }); 
+
+      const torneos = await Torneo.find({ usuario: usuarioO._id });
+      // Si no hay resultados
+      if (!torneos) return next();
+        console.log(torneos.nombreTorneo);
+        const nombre= usuario.nombre;
+        res.render("torneos/mostrarTorneos", {
+          nombrePagina: "Torneos",
+          torneos,
+          nombre
+        }); 
     
-  // Mostrar una presupuesto
-/*   exports.mostrarPresupuesto = async (req, res, next) => {
-    const usuarioO = req.user;
-    const presupuestos = await Presupuesto.find({ usuario: usuarioO._id });
-    const usuario = await Usuario.findOne({ _id: usuarioO._id });    
-    // Si no hay resultados
-    if (!presupuestos) return next();
-    //console.log(usuario);
-    var resultado = 0;
-    const nombre= usuario.nombre; */
+    
+  } catch (error) {
+    // Ingresar el error al arreglo de errores
+   console.log("no se poe");
+   
+     
+  }
+ 
+  };
