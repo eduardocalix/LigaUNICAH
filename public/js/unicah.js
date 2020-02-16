@@ -1,1 +1,0 @@
-$(document).ready(function(){$(".menu-bar").click(function(e){e.preventDefault(),e.stopPropagation(),$(".menu ul").fadeToggle("slow")})}),$(window).scroll(function(e){$(".swps").offset().top>500?$(".swps").addClass("bg-inverse"):$(".swps").removeClass("bg-inverse")});

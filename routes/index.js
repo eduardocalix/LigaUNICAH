@@ -55,6 +55,8 @@ router.post("/nuevoTorneo",authController.verificarUsuario, torneoController.agr
  
 // Mostrar una torneo
 router.get("/mostrarTorneos", torneoController.mostrarTorneo);
+router.get("/allTorneos", torneoController.mostrarTorneoAll);
+
 /*
 // Editar un torneo
 router.get(

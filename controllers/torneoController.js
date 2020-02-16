@@ -43,17 +43,16 @@ exports.agregarTorneo = async (req, res) => {
   };
 
 exports.mostrarTorneoAll = async(req,res, next)=> {
-    const torneos = await Torneo.find();
-      // Si no hay resultados
-        if (!torneos) return next();
+  const torneos = await Torneo.find();
+    // Si no hay resultados
+  if (!torneos) return next();
           //console.log(torneos.nombreTorneo);
-          const nombre= "UNICAH";
-          res.render("torneos/mostrarTorneos", {
-            nombrePagina: "Torneos",
-            torneos,
-            nombre
-          }); 
-
+    const nombre= "UNICAH";
+    res.render("torneos/allTorneos", {
+      nombrePagina: "Torneos",
+      torneos,
+      nombre
+    }); 
 }    
  
 exports.mostrarTorneo = async (req, res, next) => {
