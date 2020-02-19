@@ -109,6 +109,31 @@ router.post("/reestablecer/:token",authController.almacenarNuevaContrasena);
 
 /* router.get("/totalTorneo/:_id",presupuestoController.verTodo); */
 
+//Agregar un jugador
+router.get("/nuevoJugador/:url", jugadorController.formularioNuevoJugador);
+
+router.post("/nuevoJugador/:url",authController.verificarUsuario,jugadorController.agregarJugador);
+
+// Mostrar los jugadors
+/* router.get("/mostrarJugador/:_id", jugadorController.mostrarJugadors);
+
+// Editar una jugador
+router.get(
+"/editarJugador/:url",
+authController.verificarUsuario,
+jugadorController.formularioEditarJugador
+);
+router.post(
+"/editarJugador/:url",
+authController.verificarUsuario,
+jugadorController.editarJugador
+);
+
+// Eliminar una jugador
+router.delete("/delete/:_id", jugadorController.eliminarJugador);
+
+ */
+
 return router;
 
 };

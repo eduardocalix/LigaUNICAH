@@ -8,7 +8,7 @@ const Usuario = require('../models/modeloUsuario');
 exports.formularioNuevoEquipo =  async (req, res, next) => {
   const usuarioO = req.user;
   const torneo = await Torneo.findOne({ url: req.params.url });
-  const usuario = await Usuario.find({ _id: usuarioO._id });
+  const usuario = await Usuario.findOne({ _id: usuarioO._id });
   res.render("equipos/nuevoEquipo", {
     nombrePagina: "Nuevo equipo",
     tagline: "¡Liga Jesús Sacramentado!",

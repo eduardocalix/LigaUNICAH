@@ -15,13 +15,14 @@ const jugadorSchema = new mongoose.Schema({
   },
   numeroCuenta: {
     type: Number,
-    required: "El numero de cuenta es requerido"
+    required: "El numero de cuenta es requerido",
+    trim: true
   },
   permiso: {
     type: Number,
     default:1
   },
-  equipo:{
+  urlEquipo:{
     type:String,
     trim:true
  },
