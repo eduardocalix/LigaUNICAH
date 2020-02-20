@@ -17,7 +17,7 @@ const equipoSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
-  urltorneo: {
+  urlTorneo: {
     type: String,
     trim: true
   },

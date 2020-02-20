@@ -32,7 +32,7 @@ exports.agregarEquipo = async (req, res,next) => {
       const url = torneo.url;
       const categoria = torneo.categoria;
       const equipo = new Equipo(req.body);
-      equipo.torneo = url;
+      equipo.urlTorneo = url;
       equipo.categoria = categoria;
       // Agregrando el usuario que crea la equipo
       equipo.encargado = usuario.nombre;
@@ -42,5 +42,31 @@ exports.agregarEquipo = async (req, res,next) => {
     req.flash("success", ["Nuevo equipo agregado satisfactoriamente!"]);
   
     // Redireccionar
-   res.redirect("/mostrarEquipo");
+   res.redirect("/mostrarEquipos");
+  };
+
+  exports.mostrarEquipo = async (req, res, next) => {
+  
+    try {
+      const usuarioO = req.user;
+      const usuario = await Usuario.findOne({ _id: usuarioO._id }); 
+      const equipos = await Equipo.find({urlTorneo: req.params.url });
+      // Si no hay resultados
+      if (!equipos) return next();
+        console.log(equipos.nombreEquipo);
+        const nombre= usuario.nombre;
+        res.render("equipos/mostrarEquipos", {
+          nombrePagina: "Equipos",
+          equipos,
+          nombre
+        }); 
+    
+    
+  } catch (error) {
+    // Ingresar el error al arreglo de errores
+   console.log("no se poe");
+   
+     
+  }
+ 
   };

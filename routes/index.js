@@ -6,6 +6,7 @@ const ligaController = require("../controllers/ligaController");
 const equipoController = require("../controllers/equipoController");
 const torneoController = require("../controllers/torneoController");
 const usuarioController = require("../Controllers/usuarioController");
+const jugadorController = require("../controllers/jugadorController");
 const authController = require("../controllers/authController");
 
 module.exports = () => {
@@ -80,8 +81,8 @@ router.get("/nuevoEquipo/:url", equipoController.formularioNuevoEquipo);
 router.post("/nuevoEquipo/:url",authController.verificarUsuario,equipoController.agregarEquipo);
 
 // Mostrar los equipos
-/* router.get("/mostrarEquipo/:_id", equipoController.mostrarEquipos);
-
+ router.get("/mostrarEquipos/:url", equipoController.mostrarEquipo);
+/*
 // Editar una equipo
 router.get(
 "/editarEquipo/:url",
